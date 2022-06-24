@@ -7,6 +7,7 @@ import AddButton from "../components/AddButton";
 import Featured from "../components/Featured";
 import PizzaList from "../components/PizzaList";
 import styles from "../styles/Home.module.css";
+import { server } from "..//util/config";
 
 export default function Home({ pizzaList, admin }) {
   console.log(pizzaList);
@@ -34,7 +35,7 @@ export const getServerSideProps = async (ctx) => {
   //   admin = true;
   // }
 
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await axios.get(`${server}/api/products`);
   return {
     props: {
       pizzaList: res.data,
